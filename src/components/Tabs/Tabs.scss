@@ -1,0 +1,23 @@
+.tabs {
+  --tabsBodyRowGap: 0;
+  --tabsNonActiveContentDisplay: none;
+
+  &--enable-only-on-mobile {
+    @include mobile-above {
+      --tabsNonActiveContentDisplay: block;
+      //объявляем переменную отображения навигации табов
+      --tabsNavigationDisplay: none;
+    }
+  }
+
+  &__body{
+    display: grid;
+    row-gap: var(--tabsBodyRowGap);
+  }
+
+  &__content {
+    &:not(.is-active) {
+      display: var(--tabsNonActiveContentDisplay);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+import "./Badge.scss"
+import classNames from "classnames"
+import Icon from "@/components/Icon"
+
+const Badge = (props) => {
+  const {
+    className,
+    // '' (default) | 'accent'
+    mode = "",
+    isBig = false,
+    children,
+
+    IconFallbackSVG,
+    iconName,
+    iconAriaLabel,
+  } = props
+  return (
+    <div
+      className={classNames(className, "badge", {
+        [`badge--${mode}`]: mode,
+        "badge-big": isBig,
+      })}
+    >
+      {iconName && (
+        <Icon
+          FallbackSVG={IconFallbackSVG}
+          className="badge__icon"
+          name={iconName}
+          ariaLabel={iconAriaLabel}
+        />
+      )}
+      <span>{children}</span>
+    </div>
+  )
+}
+export default Badge
